@@ -1,10 +1,8 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Html } from '@react-three/drei';
 import { InteractiveObject } from './InteractiveObject';
 import { useAppStore } from '@/stores';
-import { ProjectsContent } from '@/components/content/ProjectsContent';
 import { OBJECT_POSITIONS } from '@/utils/constants';
 
 export const Folder = () => {
@@ -64,18 +62,6 @@ export const Folder = () => {
           </mesh>
         ))}
       </group>
-
-      {/* Content panel */}
-      {isActive && (
-        <Html
-          position={[0, 0.5, 0]}
-          center
-          style={{ width: '450px' }}
-          distanceFactor={0.9}
-        >
-          <ProjectsContent />
-        </Html>
-      )}
     </InteractiveObject>
   );
 };

@@ -1,57 +1,7 @@
 import styled from 'styled-components';
 import { experience } from '@/data';
+import { TerminalCard } from './TerminalCard';
 import { fadeInUp } from '@/styles/animations';
-
-const Container = styled.div`
-  background: rgba(13, 17, 23, 0.95);
-  border: 1px solid #00ff88;
-  border-radius: 8px;
-  padding: 16px;
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding-bottom: 12px;
-  margin-bottom: 12px;
-  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-`;
-
-const WindowButtons = styled.div`
-  display: flex;
-  gap: 6px;
-`;
-
-const WindowButton = styled.div<{ $color: string }>`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: ${(props) => props.$color};
-`;
-
-const Title = styled.span`
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  color: #888;
-  margin-left: 8px;
-`;
-
-const Content = styled.div`
-  max-height: 380px;
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #00ff88;
-    border-radius: 2px;
-  }
-`;
 
 const Timeline = styled.div`
   position: relative;
@@ -66,11 +16,19 @@ const Timeline = styled.div`
     width: 2px;
     background: linear-gradient(to bottom, #00ff88, #00d4ff);
   }
+
+  @media (max-width: 480px) {
+    padding-left: 16px;
+
+    &::before {
+      left: 3px;
+    }
+  }
 `;
 
 const Job = styled.div<{ $index: number }>`
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   animation: ${fadeInUp} 0.5s ease forwards;
   animation-delay: ${(props) => props.$index * 0.2}s;
   opacity: 0;
@@ -91,47 +49,70 @@ const Job = styled.div<{ $index: number }>`
     border: 2px solid #0d1117;
     box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
   }
+
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
+
+    &::before {
+      left: -16px;
+      width: 8px;
+      height: 8px;
+    }
+  }
 `;
 
 const JobHeader = styled.div`
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 `;
 
 const Company = styled.h4`
   font-family: 'Orbitron', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: #00ff88;
   margin: 0;
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+  }
 `;
 
 const Role = styled.p`
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   color: #e8e8e8;
   margin: 4px 0 0 0;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 const Period = styled.span`
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 11px;
   color: #888;
   display: block;
-  margin-top: 2px;
+  margin-top: 4px;
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+  }
 `;
 
 const Highlights = styled.ul`
-  margin: 8px 0 0 0;
+  margin: 10px 0 0 0;
   padding-left: 16px;
   list-style: none;
 `;
 
 const Highlight = styled.li`
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 11px;
   color: #a0a0a0;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   position: relative;
+  line-height: 1.5;
 
   &::before {
     content: '▸';
@@ -139,63 +120,62 @@ const Highlight = styled.li`
     left: -14px;
     color: #00d4ff;
   }
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+  }
 `;
 
 const TechStack = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 8px;
+  gap: 6px;
+  margin-top: 10px;
 `;
 
 const Tech = styled.span`
   background: rgba(0, 212, 255, 0.1);
   border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 3px;
-  padding: 2px 6px;
-  font-size: 9px;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-family: 'Space Mono', monospace;
   color: #00d4ff;
+
+  @media (max-width: 480px) {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
 `;
 
 export const ExperienceContent = () => {
   return (
-    <Container>
-      <Header>
-        <WindowButtons>
-          <WindowButton $color="#ff5f57" />
-          <WindowButton $color="#febc2e" />
-          <WindowButton $color="#28c840" />
-        </WindowButtons>
-        <Title>experience.log</Title>
-      </Header>
+    <TerminalCard title="Experience" accent="green">
+      <Timeline>
+        {experience.map((job, index) => (
+          <Job key={job.company} $index={index}>
+            <JobHeader>
+              <Company>{job.company}</Company>
+              <Role>{job.role}</Role>
+              <Period>
+                {job.period} • {job.duration}
+              </Period>
+            </JobHeader>
 
-      <Content>
-        <Timeline>
-          {experience.map((job, index) => (
-            <Job key={job.company} $index={index}>
-              <JobHeader>
-                <Company>{job.company}</Company>
-                <Role>{job.role}</Role>
-                <Period>
-                  {job.period} • {job.duration}
-                </Period>
-              </JobHeader>
+            <Highlights>
+              {job.highlights.slice(0, 4).map((highlight, i) => (
+                <Highlight key={i}>{highlight}</Highlight>
+              ))}
+            </Highlights>
 
-              <Highlights>
-                {job.highlights.slice(0, 4).map((highlight, i) => (
-                  <Highlight key={i}>{highlight}</Highlight>
-                ))}
-              </Highlights>
-
-              <TechStack>
-                {job.technologies.map((tech) => (
-                  <Tech key={tech}>{tech}</Tech>
-                ))}
-              </TechStack>
-            </Job>
-          ))}
-        </Timeline>
-      </Content>
-    </Container>
+            <TechStack>
+              {job.technologies.map((tech) => (
+                <Tech key={tech}>{tech}</Tech>
+              ))}
+            </TechStack>
+          </Job>
+        ))}
+      </Timeline>
+    </TerminalCard>
   );
 };

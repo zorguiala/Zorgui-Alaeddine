@@ -5,4 +5,4 @@ export { SocialLinks } from './SocialLinks';
 export { LoadingScreen } from './LoadingScreen';
 export { Onboarding } from './Onboarding';
 export { Layout } from './Layout';
-
+export { ContentOverlay } from './ContentOverlay';

@@ -1,10 +1,8 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Html } from '@react-three/drei';
 import { InteractiveObject } from './InteractiveObject';
 import { useAppStore } from '@/stores';
-import { SkillsContent } from '@/components/content/SkillsContent';
 import { OBJECT_POSITIONS } from '@/utils/constants';
 
 export const Toolbox = () => {
@@ -76,16 +74,18 @@ export const Toolbox = () => {
         </mesh>
       ))}
 
-      {/* Content panel */}
+      {/* Tools inside (visible when open) */}
       {isActive && (
-        <Html
-          position={[0, 0.6, 0]}
-          center
-          style={{ width: '420px' }}
-          distanceFactor={0.9}
-        >
-          <SkillsContent />
-        </Html>
+        <group position={[0, 0.05, 0]}>
+          <mesh position={[-0.08, 0, 0]} rotation={[0, 0.3, 0]}>
+            <boxGeometry args={[0.12, 0.015, 0.025]} />
+            <meshStandardMaterial color="#888888" metalness={0.9} roughness={0.2} />
+          </mesh>
+          <mesh position={[0.06, 0, 0.04]} rotation={[0, -0.2, 0]}>
+            <cylinderGeometry args={[0.008, 0.008, 0.1, 8]} />
+            <meshStandardMaterial color="#ff6600" metalness={0.3} roughness={0.6} />
+          </mesh>
+        </group>
       )}
     </InteractiveObject>
   );
