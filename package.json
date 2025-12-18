@@ -1,0 +1,16 @@
+{
+  "name": "zorgui-alaeddine",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Alaeddine ZORGUI's portfolio monorepo",
+  "scripts": {
+    "dev": "pnpm --filter @zorgui/portfolio dev",
+    "build": "pnpm --filter @zorgui/portfolio build",
+    "preview": "pnpm --filter @zorgui/portfolio preview",
+    "lint": "pnpm -r lint"
+  },
+  "keywords": ["portfolio", "react", "three.js", "monorepo"],
+  "author": "Alaeddine ZORGUI",
+  "license": "MIT"
+}
+
