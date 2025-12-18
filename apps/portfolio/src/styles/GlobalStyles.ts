@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { ThemeConfig } from './theme';
 
-export const GlobalStyles = createGlobalStyle<{ theme: ThemeConfig }>`
+export const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -60,7 +59,6 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeConfig }>`
     color: ${({ theme }) => theme.colors.bg.primary};
   }
 
-  /* Scrollbar styling */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -79,9 +77,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeConfig }>`
     background: ${({ theme }) => theme.colors.accent.tertiary};
   }
 
-  /* Custom cursor for 3D canvas */
   canvas {
     display: block;
   }
 `;
-

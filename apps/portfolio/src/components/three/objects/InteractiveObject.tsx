@@ -1,5 +1,5 @@
 import { useState, useRef, ReactNode } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, ThreeEvent } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { useAppStore } from '@/stores';
@@ -39,13 +39,13 @@ export const InteractiveObject = ({
     groupRef.current.scale.setScalar(newScale);
   });
 
-  const handleClick = (e: THREE.Event) => {
+  const handleClick = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
     if (isTransitioning || isActive) return;
     setActiveSection(section);
   };
 
-  const handlePointerOver = (e: THREE.Event) => {
+  const handlePointerOver = (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation();
     if (activeSection) return;
     setHovered(true);
@@ -96,4 +96,3 @@ export const InteractiveObject = ({
     </group>
   );
 };
-

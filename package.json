@@ -3,14 +3,16 @@
   "private": true,
   "version": "1.0.0",
   "description": "Alaeddine ZORGUI's portfolio monorepo",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "pnpm --filter @zorgui/portfolio dev",
-    "build": "pnpm --filter @zorgui/portfolio build",
-    "preview": "pnpm --filter @zorgui/portfolio preview",
-    "lint": "pnpm -r lint"
+    "dev": "npm run dev --workspace=@zorgui/portfolio",
+    "build": "npm run build --workspace=@zorgui/portfolio",
+    "preview": "npm run preview --workspace=@zorgui/portfolio"
   },
-  "keywords": ["portfolio", "react", "three.js", "monorepo"],
+  "keywords": ["portfolio", "react", "three.js"],
   "author": "Alaeddine ZORGUI",
   "license": "MIT"
 }
-

@@ -26,11 +26,11 @@ const WindowButtons = styled.div`
   gap: 6px;
 `;
 
-const WindowButton = styled.div<{ color: string }>`
+const WindowButton = styled.div<{ $color: string }>`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: ${(props) => props.color};
+  background: ${(props) => props.$color};
 `;
 
 const Title = styled.span`
@@ -99,9 +99,9 @@ export const AboutContent = () => {
     <Container>
       <Header>
         <WindowButtons>
-          <WindowButton color="#ff5f57" />
-          <WindowButton color="#febc2e" />
-          <WindowButton color="#28c840" />
+          <WindowButton $color="#ff5f57" />
+          <WindowButton $color="#febc2e" />
+          <WindowButton $color="#28c840" />
         </WindowButtons>
         <Title>about.ts</Title>
       </Header>
@@ -139,4 +139,3 @@ export const AboutContent = () => {
     </Container>
   );
 };
-

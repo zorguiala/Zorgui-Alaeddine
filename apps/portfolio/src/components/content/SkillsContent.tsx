@@ -26,11 +26,11 @@ const WindowButtons = styled.div`
   gap: 6px;
 `;
 
-const WindowButton = styled.div<{ color: string }>`
+const WindowButton = styled.div<{ $color: string }>`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: ${(props) => props.color};
+  background: ${(props) => props.$color};
 `;
 
 const Title = styled.span`
@@ -53,10 +53,10 @@ const Content = styled.div`
   }
 `;
 
-const Category = styled.div`
+const Category = styled.div<{ $index: number }>`
   margin-bottom: 16px;
   animation: ${fadeInUp} 0.4s ease forwards;
-  animation-delay: ${(props: { index: number }) => props.index * 0.1}s;
+  animation-delay: ${(props) => props.$index * 0.1}s;
   opacity: 0;
 
   &:last-child {
@@ -80,8 +80,8 @@ const SkillList = styled.div`
   gap: 6px;
 `;
 
-const SkillTag = styled.div<{ level: number }>`
-  background: rgba(255, 107, 53, ${(props) => props.level / 200});
+const SkillTag = styled.div<{ $level: number }>`
+  background: rgba(255, 107, 53, ${(props) => props.$level / 200});
   border: 1px solid rgba(255, 107, 53, 0.5);
   border-radius: 4px;
   padding: 4px 10px;
@@ -118,20 +118,20 @@ export const SkillsContent = () => {
     <Container>
       <Header>
         <WindowButtons>
-          <WindowButton color="#ff5f57" />
-          <WindowButton color="#febc2e" />
-          <WindowButton color="#28c840" />
+          <WindowButton $color="#ff5f57" />
+          <WindowButton $color="#febc2e" />
+          <WindowButton $color="#28c840" />
         </WindowButtons>
         <Title>skills.json</Title>
       </Header>
 
       <Content>
         {Object.entries(skills).map(([category, skillList], index) => (
-          <Category key={category} index={index}>
+          <Category key={category} $index={index}>
             <CategoryTitle>{categoryTitles[category]}</CategoryTitle>
             <SkillList>
               {skillList.map((skill) => (
-                <SkillTag key={skill.name} level={skill.level}>
+                <SkillTag key={skill.name} $level={skill.level}>
                   {skill.name}
                   <SkillLevel>{skill.years}y</SkillLevel>
                 </SkillTag>
@@ -143,4 +143,3 @@ export const SkillsContent = () => {
     </Container>
   );
 };
-

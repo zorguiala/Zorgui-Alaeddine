@@ -8,7 +8,8 @@ export const Room = () => {
   // Animate sunlight rays
   useFrame((state) => {
     if (sunlightRef.current) {
-      sunlightRef.current.material.opacity = 0.08 + Math.sin(state.clock.elapsedTime * 0.5) * 0.02;
+      const material = sunlightRef.current.material as THREE.MeshBasicMaterial;
+      material.opacity = 0.08 + Math.sin(state.clock.elapsedTime * 0.5) * 0.02;
     }
   });
 
@@ -199,4 +200,3 @@ const PictureFrame = ({
     </group>
   );
 };
-

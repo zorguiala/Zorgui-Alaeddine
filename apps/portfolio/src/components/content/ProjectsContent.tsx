@@ -27,11 +27,11 @@ const WindowButtons = styled.div`
   gap: 6px;
 `;
 
-const WindowButton = styled.div<{ color: string }>`
+const WindowButton = styled.div<{ $color: string }>`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: ${(props) => props.color};
+  background: ${(props) => props.$color};
 `;
 
 const Title = styled.span`
@@ -46,21 +46,21 @@ const Content = styled.div`
   gap: 12px;
 `;
 
-const ProjectCard = styled.div<{ index: number; isPlaceholder: boolean }>`
+const ProjectCard = styled.div<{ $index: number; $isPlaceholder: boolean }>`
   background: ${(props) =>
-    props.isPlaceholder ? 'rgba(0, 212, 255, 0.05)' : 'rgba(0, 212, 255, 0.1)'};
+    props.$isPlaceholder ? 'rgba(0, 212, 255, 0.05)' : 'rgba(0, 212, 255, 0.1)'};
   border: 1px solid
     ${(props) =>
-      props.isPlaceholder ? 'rgba(0, 212, 255, 0.2)' : 'rgba(0, 212, 255, 0.4)'};
+      props.$isPlaceholder ? 'rgba(0, 212, 255, 0.2)' : 'rgba(0, 212, 255, 0.4)'};
   border-radius: 6px;
   padding: 12px;
   animation: ${fadeInUp} 0.4s ease forwards;
-  animation-delay: ${(props) => props.index * 0.1}s;
+  animation-delay: ${(props) => props.$index * 0.1}s;
   opacity: 0;
   transition: all 0.2s ease;
 
   ${(props) =>
-    !props.isPlaceholder &&
+    !props.$isPlaceholder &&
     `
     &:hover {
       border-color: #00d4ff;
@@ -147,15 +147,15 @@ const PlaceholderIcon = styled.div`
   }
 `;
 
-const StatusBadge = styled.span<{ status: string }>`
+const StatusBadge = styled.span<{ $status: string }>`
   font-size: 9px;
   padding: 2px 6px;
   border-radius: 3px;
   background: ${(props) =>
-    props.status === 'completed'
+    props.$status === 'completed'
       ? 'rgba(0, 255, 136, 0.2)'
       : 'rgba(136, 136, 136, 0.2)'};
-  color: ${(props) => (props.status === 'completed' ? '#00ff88' : '#888')};
+  color: ${(props) => (props.$status === 'completed' ? '#00ff88' : '#888')};
 `;
 
 export const ProjectsContent = () => {
@@ -163,9 +163,9 @@ export const ProjectsContent = () => {
     <Container>
       <Header>
         <WindowButtons>
-          <WindowButton color="#ff5f57" />
-          <WindowButton color="#febc2e" />
-          <WindowButton color="#28c840" />
+          <WindowButton $color="#ff5f57" />
+          <WindowButton $color="#febc2e" />
+          <WindowButton $color="#28c840" />
         </WindowButtons>
         <Title>projects/</Title>
       </Header>
@@ -177,8 +177,8 @@ export const ProjectsContent = () => {
           return (
             <ProjectCard
               key={project.id}
-              index={index}
-              isPlaceholder={isPlaceholder}
+              $index={index}
+              $isPlaceholder={isPlaceholder}
             >
               {isPlaceholder ? (
                 <>
@@ -196,7 +196,7 @@ export const ProjectsContent = () => {
                 <>
                   <ProjectTitle>
                     {project.title}
-                    <StatusBadge status={project.status}>{project.status}</StatusBadge>
+                    <StatusBadge $status={project.status}>{project.status}</StatusBadge>
                   </ProjectTitle>
                   <ProjectDescription>{project.description}</ProjectDescription>
                   {project.technologies.length > 0 && (
@@ -235,4 +235,3 @@ export const ProjectsContent = () => {
     </Container>
   );
 };
-

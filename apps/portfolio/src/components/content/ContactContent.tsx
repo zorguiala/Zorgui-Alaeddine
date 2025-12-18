@@ -28,11 +28,11 @@ const WindowButtons = styled.div`
   gap: 6px;
 `;
 
-const WindowButton = styled.div<{ color: string }>`
+const WindowButton = styled.div<{ $color: string }>`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: ${(props) => props.color};
+  background: ${(props) => props.$color};
 `;
 
 const Title = styled.span`
@@ -54,7 +54,7 @@ const ContactLinks = styled.div`
   gap: 8px;
 `;
 
-const ContactLink = styled.a<{ index: number }>`
+const ContactLink = styled.a<{ $index: number }>`
   display: flex;
   align-items: center;
   gap: 10px;
@@ -68,7 +68,7 @@ const ContactLink = styled.a<{ index: number }>`
   color: #e8e8e8;
   transition: all 0.2s ease;
   animation: ${fadeInUp} 0.3s ease forwards;
-  animation-delay: ${(props) => 0.5 + props.index * 0.1}s;
+  animation-delay: ${(props) => 0.5 + props.$index * 0.1}s;
   opacity: 0;
 
   &:hover {
@@ -90,7 +90,7 @@ const ContactLink = styled.a<{ index: number }>`
   }
 `;
 
-const InfoItem = styled.div<{ index: number }>`
+const InfoItem = styled.div<{ $index: number }>`
   display: flex;
   align-items: center;
   gap: 10px;
@@ -99,7 +99,7 @@ const InfoItem = styled.div<{ index: number }>`
   font-size: 11px;
   color: #a0a0a0;
   animation: ${fadeInUp} 0.3s ease forwards;
-  animation-delay: ${(props) => 0.8 + props.index * 0.1}s;
+  animation-delay: ${(props) => 0.8 + props.$index * 0.1}s;
   opacity: 0;
 
   svg {
@@ -147,9 +147,9 @@ export const ContactContent = () => {
     <Container>
       <Header>
         <WindowButtons>
-          <WindowButton color="#ff5f57" />
-          <WindowButton color="#febc2e" />
-          <WindowButton color="#28c840" />
+          <WindowButton $color="#ff5f57" />
+          <WindowButton $color="#febc2e" />
+          <WindowButton $color="#28c840" />
         </WindowButtons>
         <Title>contact.ts</Title>
       </Header>
@@ -159,7 +159,7 @@ export const ContactContent = () => {
       </TerminalSection>
 
       <ContactLinks>
-        <ContactLink href={`mailto:${profile.email}`} index={0}>
+        <ContactLink href={`mailto:${profile.email}`} $index={0}>
           <Mail />
           {profile.email}
         </ContactLink>
@@ -168,7 +168,7 @@ export const ContactContent = () => {
           href={profile.social.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          index={1}
+          $index={1}
         >
           <Linkedin />
           LinkedIn Profile
@@ -178,19 +178,19 @@ export const ContactContent = () => {
           href={profile.social.github}
           target="_blank"
           rel="noopener noreferrer"
-          index={2}
+          $index={2}
         >
           <Github />
           GitHub Profile
         </ContactLink>
       </ContactLinks>
 
-      <InfoItem index={0}>
+      <InfoItem $index={0}>
         <MapPin />
         {profile.location} • Open to relocation
       </InfoItem>
 
-      <InfoItem index={1}>
+      <InfoItem $index={1}>
         <Phone />
         {profile.phone}
       </InfoItem>
@@ -199,4 +199,3 @@ export const ContactContent = () => {
     </Container>
   );
 };
-

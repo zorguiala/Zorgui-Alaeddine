@@ -26,11 +26,11 @@ const WindowButtons = styled.div`
   gap: 6px;
 `;
 
-const WindowButton = styled.div<{ color: string }>`
+const WindowButton = styled.div<{ $color: string }>`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: ${(props) => props.color};
+  background: ${(props) => props.$color};
 `;
 
 const Title = styled.span`
@@ -68,11 +68,11 @@ const Timeline = styled.div`
   }
 `;
 
-const Job = styled.div<{ index: number }>`
+const Job = styled.div<{ $index: number }>`
   position: relative;
   margin-bottom: 20px;
   animation: ${fadeInUp} 0.5s ease forwards;
-  animation-delay: ${(props) => props.index * 0.2}s;
+  animation-delay: ${(props) => props.$index * 0.2}s;
   opacity: 0;
 
   &:last-child {
@@ -162,9 +162,9 @@ export const ExperienceContent = () => {
     <Container>
       <Header>
         <WindowButtons>
-          <WindowButton color="#ff5f57" />
-          <WindowButton color="#febc2e" />
-          <WindowButton color="#28c840" />
+          <WindowButton $color="#ff5f57" />
+          <WindowButton $color="#febc2e" />
+          <WindowButton $color="#28c840" />
         </WindowButtons>
         <Title>experience.log</Title>
       </Header>
@@ -172,7 +172,7 @@ export const ExperienceContent = () => {
       <Content>
         <Timeline>
           {experience.map((job, index) => (
-            <Job key={job.company} index={index}>
+            <Job key={job.company} $index={index}>
               <JobHeader>
                 <Company>{job.company}</Company>
                 <Role>{job.role}</Role>
@@ -199,4 +199,3 @@ export const ExperienceContent = () => {
     </Container>
   );
 };
-

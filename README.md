@@ -1,6 +1,6 @@
 # Alaeddine ZORGUI - Interactive 3D Portfolio
 
-An interactive 3D portfolio experience built with React, Three.js, and styled-components. Features a virtual desk scene where users can click on objects to explore different sections.
+An interactive 3D portfolio experience built with React, Three.js, and styled-components. Features a cozy room scene with a desk where users can click on objects to explore different sections.
 
 ## 🚀 Live Demo
 
@@ -8,7 +8,7 @@ An interactive 3D portfolio experience built with React, Three.js, and styled-co
 
 ## ✨ Features
 
-- **Interactive 3D Scene**: Navigate through a virtual desk with clickable objects
+- **Interactive 3D Room Scene**: A cozy room with desk, lamp, window, and more
 - **Smooth Camera Transitions**: Animated camera movements when selecting sections
 - **Terminal Aesthetic**: Developer-focused UI with typing animations
 - **Dark/Light Theme**: Toggle between dark and light modes
@@ -21,13 +21,11 @@ An interactive 3D portfolio experience built with React, Three.js, and styled-co
 - **3D Engine**: Three.js via @react-three/fiber + @react-three/drei
 - **Styling**: styled-components with CSS-in-JS theming
 - **State Management**: Zustand
-- **Animations**: Framer Motion + Three.js native animations
+- **Animations**: Three.js native animations
 - **Icons**: Lucide React
 - **Fonts**: Space Mono + Orbitron
 
 ## 📦 Project Structure
-
-This is a monorepo managed with pnpm workspaces:
 
 ```
 ├── apps/
@@ -40,7 +38,7 @@ This is a monorepo managed with pnpm workspaces:
 │       │   ├── stores/     # Zustand state management
 │       │   ├── styles/     # Theme and global styles
 │       │   ├── hooks/      # Custom React hooks
-│       │   ├── data/       # Portfolio data (profile, skills, etc.)
+│       │   ├── data/       # Portfolio data
 │       │   ├── utils/      # Constants and helpers
 │       │   └── types/      # TypeScript types
 │       └── public/         # Static assets
@@ -54,7 +52,7 @@ This is a monorepo managed with pnpm workspaces:
 ### Prerequisites
 
 - Node.js 18+
-- pnpm (recommended) or npm
+- npm
 
 ### Installation
 
@@ -64,10 +62,10 @@ git clone https://github.com/zorguiala/Zorgui-Alaeddine.git
 cd Zorgui-Alaeddine
 
 # Install dependencies
-pnpm install
+npm install
 
 # Start development server
-pnpm dev
+npm run dev
 ```
 
 The app will be available at `http://localhost:3000`
@@ -76,15 +74,15 @@ The app will be available at `http://localhost:3000`
 
 ```bash
 # Build the app
-pnpm build
+npm run build
 
 # Preview the build
-pnpm preview
+npm run preview
 ```
 
 ## 🎮 How to Use
 
-1. **Overview**: The portfolio starts with a bird's-eye view of a virtual desk
+1. **Overview**: The portfolio starts with a view of a cozy room with a desk
 2. **Navigate**: Click on objects to zoom into different sections:
    - **Monitor** → About Me
    - **Laptop** → Contact Information
@@ -107,7 +105,7 @@ Edit the files in `apps/portfolio/src/data/`:
 
 ### Modifying the Theme
 
-Edit `apps/portfolio/src/styles/theme.ts` to customize colors, fonts, and shadows.
+Edit `apps/portfolio/src/styles/theme.ts` to customize colors.
 
 ### Adding New Projects
 
