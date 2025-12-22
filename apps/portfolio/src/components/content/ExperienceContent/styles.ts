@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import { experience } from '@/data';
-import { TerminalCard } from './TerminalCard';
 import { fadeInUp } from '@/styles/animations';
 
-const Timeline = styled.div`
+export const Timeline = styled.div`
   position: relative;
   padding-left: 20px;
 
@@ -26,7 +24,7 @@ const Timeline = styled.div`
   }
 `;
 
-const Job = styled.div<{ $index: number }>`
+export const Job = styled.div<{ $index: number }>`
   position: relative;
   margin-bottom: 24px;
   animation: ${fadeInUp} 0.5s ease forwards;
@@ -61,11 +59,11 @@ const Job = styled.div<{ $index: number }>`
   }
 `;
 
-const JobHeader = styled.div`
+export const JobHeader = styled.div`
   margin-bottom: 10px;
 `;
 
-const Company = styled.h4`
+export const Company = styled.h4`
   font-family: 'Orbitron', sans-serif;
   font-size: 15px;
   font-weight: 600;
@@ -77,7 +75,7 @@ const Company = styled.h4`
   }
 `;
 
-const Role = styled.p`
+export const Role = styled.p`
   font-family: 'Space Mono', monospace;
   font-size: 13px;
   color: #e8e8e8;
@@ -88,7 +86,7 @@ const Role = styled.p`
   }
 `;
 
-const Period = styled.span`
+export const Period = styled.span`
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   color: #888;
@@ -100,13 +98,13 @@ const Period = styled.span`
   }
 `;
 
-const Highlights = styled.ul`
+export const Highlights = styled.ul`
   margin: 10px 0 0 0;
   padding-left: 16px;
   list-style: none;
 `;
 
-const Highlight = styled.li`
+export const Highlight = styled.li`
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   color: #a0a0a0;
@@ -126,14 +124,14 @@ const Highlight = styled.li`
   }
 `;
 
-const TechStack = styled.div`
+export const TechStack = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 10px;
 `;
 
-const Tech = styled.span`
+export const Tech = styled.span`
   background: rgba(0, 212, 255, 0.1);
   border: 1px solid rgba(0, 212, 255, 0.3);
   border-radius: 4px;
@@ -148,34 +146,3 @@ const Tech = styled.span`
   }
 `;
 
-export const ExperienceContent = () => {
-  return (
-    <TerminalCard title="Experience" accent="green">
-      <Timeline>
-        {experience.map((job, index) => (
-          <Job key={job.company} $index={index}>
-            <JobHeader>
-              <Company>{job.company}</Company>
-              <Role>{job.role}</Role>
-              <Period>
-                {job.period} • {job.duration}
-              </Period>
-            </JobHeader>
-
-            <Highlights>
-              {job.highlights.slice(0, 4).map((highlight, i) => (
-                <Highlight key={i}>{highlight}</Highlight>
-              ))}
-            </Highlights>
-
-            <TechStack>
-              {job.technologies.map((tech) => (
-                <Tech key={tech}>{tech}</Tech>
-              ))}
-            </TechStack>
-          </Job>
-        ))}
-      </Timeline>
-    </TerminalCard>
-  );
-};

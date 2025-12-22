@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import { skills } from '@/data';
-import { TerminalCard } from './TerminalCard';
 import { fadeInUp } from '@/styles/animations';
 
-const Category = styled.div<{ $index: number }>`
+export const Category = styled.div<{ $index: number }>`
   margin-bottom: 16px;
   animation: ${fadeInUp} 0.4s ease forwards;
   animation-delay: ${(props) => props.$index * 0.1}s;
@@ -14,7 +12,7 @@ const Category = styled.div<{ $index: number }>`
   }
 `;
 
-const CategoryTitle = styled.h4`
+export const CategoryTitle = styled.h4`
   font-family: 'Orbitron', sans-serif;
   font-size: 12px;
   font-weight: 600;
@@ -28,7 +26,7 @@ const CategoryTitle = styled.h4`
   }
 `;
 
-const SkillList = styled.div`
+export const SkillList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -38,7 +36,7 @@ const SkillList = styled.div`
   }
 `;
 
-const SkillTag = styled.div<{ $level: number }>`
+export const SkillTag = styled.div<{ $level: number }>`
   background: rgba(255, 107, 53, ${(props) => props.$level / 200});
   border: 1px solid rgba(255, 107, 53, 0.5);
   border-radius: 6px;
@@ -64,7 +62,7 @@ const SkillTag = styled.div<{ $level: number }>`
   }
 `;
 
-const SkillLevel = styled.span`
+export const SkillLevel = styled.span`
   font-size: 10px;
   color: #00ff88;
   opacity: 0.8;
@@ -74,29 +72,3 @@ const SkillLevel = styled.span`
   }
 `;
 
-const categoryTitles: Record<string, string> = {
-  frontend: 'Frontend & UI',
-  testing: 'Testing & QA',
-  backend: 'Backend & APIs',
-  tools: 'Tools & DevOps',
-};
-
-export const SkillsContent = () => {
-  return (
-    <TerminalCard title="Skills" accent="orange">
-      {Object.entries(skills).map(([category, skillList], index) => (
-        <Category key={category} $index={index}>
-          <CategoryTitle>{categoryTitles[category]}</CategoryTitle>
-          <SkillList>
-            {skillList.map((skill) => (
-              <SkillTag key={skill.name} $level={skill.level}>
-                {skill.name}
-                <SkillLevel>{skill.years}y</SkillLevel>
-              </SkillTag>
-            ))}
-          </SkillList>
-        </Category>
-      ))}
-    </TerminalCard>
-  );
-};

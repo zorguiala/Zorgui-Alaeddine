@@ -1,17 +1,16 @@
-import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { scaleIn } from '@/styles/animations';
 
 export type CardAccent = 'green' | 'orange' | 'cyan' | 'purple';
 
-const accentColors: Record<CardAccent, { primary: string; glow: string }> = {
+export const accentColors: Record<CardAccent, { primary: string; glow: string }> = {
   green: { primary: '#00ff88', glow: 'rgba(0, 255, 136, 0.2)' },
   orange: { primary: '#ff6b35', glow: 'rgba(255, 107, 53, 0.2)' },
   cyan: { primary: '#00d4ff', glow: 'rgba(0, 212, 255, 0.2)' },
   purple: { primary: '#a855f7', glow: 'rgba(168, 85, 247, 0.2)' },
 };
 
-const CardWrapper = styled.div`
+export const CardWrapper = styled.div`
   position: fixed;
   inset: 0;
   display: flex;
@@ -22,7 +21,7 @@ const CardWrapper = styled.div`
   z-index: 50;
 `;
 
-const Card = styled.div<{ $accent: CardAccent }>`
+export const Card = styled.div<{ $accent: CardAccent }>`
   background: rgba(13, 17, 23, 0.95);
   border: 1px solid ${(props) => accentColors[props.$accent].primary};
   border-radius: 12px;
@@ -51,7 +50,7 @@ const Card = styled.div<{ $accent: CardAccent }>`
   }
 `;
 
-const Header = styled.div<{ $accent: CardAccent }>`
+export const Header = styled.div<{ $accent: CardAccent }>`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -66,12 +65,12 @@ const Header = styled.div<{ $accent: CardAccent }>`
   }
 `;
 
-const WindowButtons = styled.div`
+export const WindowButtons = styled.div`
   display: flex;
   gap: 6px;
 `;
 
-const WindowButton = styled.div<{ $color: string }>`
+export const WindowButton = styled.div<{ $color: string }>`
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -88,7 +87,7 @@ const WindowButton = styled.div<{ $color: string }>`
   }
 `;
 
-const Title = styled.span<{ $accent: CardAccent }>`
+export const Title = styled.span<{ $accent: CardAccent }>`
   font-family: 'Space Mono', monospace;
   font-size: 12px;
   color: ${(props) => accentColors[props.$accent].primary};
@@ -100,7 +99,7 @@ const Title = styled.span<{ $accent: CardAccent }>`
   }
 `;
 
-const Content = styled.div`
+export const Content = styled.div`
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
@@ -123,32 +122,4 @@ const Content = styled.div`
     }
   }
 `;
-
-interface TerminalCardProps {
-  title: string;
-  accent?: CardAccent;
-  children: ReactNode;
-}
-
-export const TerminalCard = ({
-  title,
-  accent = 'green',
-  children,
-}: TerminalCardProps) => {
-  return (
-    <CardWrapper>
-      <Card $accent={accent}>
-        <Header $accent={accent}>
-          <WindowButtons>
-            <WindowButton $color="#ff5f57" />
-            <WindowButton $color="#febc2e" />
-            <WindowButton $color="#28c840" />
-          </WindowButtons>
-          <Title $accent={accent}>{title}</Title>
-        </Header>
-        <Content>{children}</Content>
-      </Card>
-    </CardWrapper>
-  );
-};
 
