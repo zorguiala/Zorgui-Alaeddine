@@ -1,8 +1,7 @@
 import { Mail, Linkedin, Github, MapPin, Phone } from 'lucide-react';
 import { profile } from '@/data';
-import { TerminalText } from '../TerminalText';
 import { TerminalCard } from '../TerminalCard';
-import { TerminalSection, ContactLinks, ContactLink, InfoItem, StatusIndicator } from './styles';
+import { ContactLinks, ContactLink, InfoItem, StatusIndicator } from './styles';
 import { InfoGrid, Label, Value } from '../AboutContent/styles';
 
 export const ContactContent = () => {
