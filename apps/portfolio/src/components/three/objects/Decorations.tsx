@@ -320,7 +320,7 @@ export const Notebook = () => {
 
 export const Chair = () => {
   return (
-    <group position={[0, 0, 1.8]}>
+    <group position={[0, 0, 1.8]} rotation={[0, Math.PI, 0]}>
       {/* Seat */}
       <mesh castShadow position={[0, 0.5, 0]}>
         <boxGeometry args={[0.5, 0.08, 0.5]} />
@@ -378,48 +378,143 @@ export const Papers = () => {
 export const Bookshelf = () => {
   return (
     <group position={[-2.5, 1.5, -2]}>
-      {/* Shelf frame */}
-      <mesh castShadow>
-        <boxGeometry args={[0.8, 2.5, 0.35]} />
-        <meshStandardMaterial color="#8B4513" metalness={0.1} roughness={0.8} />
+      {/* Base/Floor of bookshelf */}
+      <mesh castShadow position={[0, -1.1, 0.02]}>
+        <boxGeometry args={[0.7, 0.05, 0.3]} />
+        <meshStandardMaterial color="#654321" metalness={0.1} roughness={0.8} />
       </mesh>
 
-      {/* Shelf dividers */}
-      {[-0.8, -0.2, 0.4, 1].map((y, i) => (
-        <mesh key={i} position={[0, y, 0.02]}>
-          <boxGeometry args={[0.72, 0.03, 0.3]} />
-          <meshStandardMaterial color="#A0522D" metalness={0.1} roughness={0.7} />
-        </mesh>
-      ))}
+      {/* Left side panel - with decorative edge */}
+      <mesh castShadow position={[-0.35, 0, 0]}>
+        <boxGeometry args={[0.08, 2.5, 0.35]} />
+        <meshStandardMaterial color="#8B4513" metalness={0.1} roughness={0.8} />
+      </mesh>
+      {/* Left side decorative trim */}
+      <mesh position={[-0.31, 0, 0.175]}>
+        <boxGeometry args={[0.02, 2.5, 0.02]} />
+        <meshStandardMaterial color="#A0522D" metalness={0.1} roughness={0.7} />
+      </mesh>
 
-      {/* Books on shelves */}
+      {/* Right side panel - with decorative edge */}
+      <mesh castShadow position={[0.35, 0, 0]}>
+        <boxGeometry args={[0.08, 2.5, 0.35]} />
+        <meshStandardMaterial color="#8B4513" metalness={0.1} roughness={0.8} />
+      </mesh>
+      {/* Right side decorative trim */}
+      <mesh position={[0.31, 0, 0.175]}>
+        <boxGeometry args={[0.02, 2.5, 0.02]} />
+        <meshStandardMaterial color="#A0522D" metalness={0.1} roughness={0.7} />
+      </mesh>
+
+      {/* Top panel */}
+      <mesh castShadow position={[0, 1.25, 0.02]}>
+        <boxGeometry args={[0.7, 0.05, 0.3]} />
+        <meshStandardMaterial color="#654321" metalness={0.1} roughness={0.8} />
+      </mesh>
+
+      {/* Back panel */}
+      <mesh castShadow position={[0, 0, -0.13]}>
+        <boxGeometry args={[0.7, 2.5, 0.04]} />
+        <meshStandardMaterial color="#A0522D" metalness={0.1} roughness={0.7} />
+      </mesh>
+
+      {/* Top shelf - thicker */}
+      <mesh castShadow position={[0, 1.1, 0.02]}>
+        <boxGeometry args={[0.7, 0.04, 0.3]} />
+        <meshStandardMaterial color="#A0522D" metalness={0.1} roughness={0.7} />
+      </mesh>
+      {/* Top shelf front edge */}
+      <mesh position={[0, 1.1, 0.17]}>
+        <boxGeometry args={[0.7, 0.04, 0.02]} />
+        <meshStandardMaterial color="#8B4513" metalness={0.1} roughness={0.7} />
+      </mesh>
+
+      {/* Middle shelf - thicker */}
+      <mesh castShadow position={[0, 0.2, 0.02]}>
+        <boxGeometry args={[0.7, 0.04, 0.3]} />
+        <meshStandardMaterial color="#A0522D" metalness={0.1} roughness={0.7} />
+      </mesh>
+      {/* Middle shelf front edge */}
+      <mesh position={[0, 0.2, 0.17]}>
+        <boxGeometry args={[0.7, 0.04, 0.02]} />
+        <meshStandardMaterial color="#8B4513" metalness={0.1} roughness={0.7} />
+      </mesh>
+
+      {/* Bottom shelf - thicker */}
+      <mesh castShadow position={[0, -0.7, 0.02]}>
+        <boxGeometry args={[0.7, 0.04, 0.3]} />
+        <meshStandardMaterial color="#A0522D" metalness={0.1} roughness={0.7} />
+      </mesh>
+      {/* Bottom shelf front edge */}
+      <mesh position={[0, -0.7, 0.17]}>
+        <boxGeometry args={[0.7, 0.04, 0.02]} />
+        <meshStandardMaterial color="#8B4513" metalness={0.1} roughness={0.7} />
+      </mesh>
+
+      {/* Books on bottom shelf - varied heights and positions */}
       <group position={[0, -0.5, 0.05]}>
         {[
-          { x: -0.25, color: '#8B0000', w: 0.06 },
-          { x: -0.15, color: '#006400', w: 0.05 },
-          { x: -0.05, color: '#00008B', w: 0.07 },
-          { x: 0.08, color: '#4B0082', w: 0.05 },
-          { x: 0.18, color: '#8B4513', w: 0.06 },
+          { x: -0.25, color: '#8B0000', w: 0.06, h: 0.22, d: 0.18 },
+          { x: -0.15, color: '#006400', w: 0.05, h: 0.20, d: 0.16 },
+          { x: -0.05, color: '#00008B', w: 0.07, h: 0.24, d: 0.19 },
+          { x: 0.08, color: '#4B0082', w: 0.05, h: 0.21, d: 0.17 },
+          { x: 0.18, color: '#8B4513', w: 0.06, h: 0.23, d: 0.18 },
         ].map((book, i) => (
-          <mesh key={i} position={[book.x, 0.12, 0]}>
-            <boxGeometry args={[book.w, 0.22, 0.18]} />
-            <meshStandardMaterial color={book.color} metalness={0.1} roughness={0.8} />
-          </mesh>
+          <group key={i} position={[book.x, book.h / 2, 0]}>
+            <mesh castShadow>
+              <boxGeometry args={[book.w, book.h, book.d]} />
+              <meshStandardMaterial color={book.color} metalness={0.1} roughness={0.8} />
+            </mesh>
+            {/* Book spine detail */}
+            <mesh position={[0, 0, book.d / 2 + 0.001]}>
+              <boxGeometry args={[book.w, book.h, 0.002]} />
+              <meshStandardMaterial color={book.color} metalness={0.2} roughness={0.6} />
+            </mesh>
+          </group>
         ))}
       </group>
 
-      {/* More books on second shelf */}
+      {/* More books on middle shelf */}
       <group position={[0, 0.1, 0.05]}>
         {[
-          { x: -0.2, color: '#FF4500', w: 0.05 },
-          { x: -0.1, color: '#2F4F4F', w: 0.06 },
-          { x: 0.02, color: '#800080', w: 0.05 },
-          { x: 0.12, color: '#B8860B', w: 0.07 },
+          { x: -0.2, color: '#FF4500', w: 0.05, h: 0.20, d: 0.16 },
+          { x: -0.1, color: '#2F4F4F', w: 0.06, h: 0.22, d: 0.17 },
+          { x: 0.02, color: '#800080', w: 0.05, h: 0.19, d: 0.15 },
+          { x: 0.12, color: '#B8860B', w: 0.07, h: 0.21, d: 0.18 },
         ].map((book, i) => (
-          <mesh key={i} position={[book.x, 0.12, 0]}>
-            <boxGeometry args={[book.w, 0.2, 0.16]} />
-            <meshStandardMaterial color={book.color} metalness={0.1} roughness={0.8} />
-          </mesh>
+          <group key={i} position={[book.x, book.h / 2, 0]}>
+            <mesh castShadow>
+              <boxGeometry args={[book.w, book.h, book.d]} />
+              <meshStandardMaterial color={book.color} metalness={0.1} roughness={0.8} />
+            </mesh>
+            {/* Book spine detail */}
+            <mesh position={[0, 0, book.d / 2 + 0.001]}>
+              <boxGeometry args={[book.w, book.h, 0.002]} />
+              <meshStandardMaterial color={book.color} metalness={0.2} roughness={0.6} />
+            </mesh>
+          </group>
+        ))}
+      </group>
+
+      {/* Books on top shelf */}
+      <group position={[0, 1.0, 0.05]}>
+        {[
+          { x: -0.25, color: '#DC143C', w: 0.06, h: 0.18, d: 0.14 },
+          { x: -0.15, color: '#4682B4', w: 0.05, h: 0.17, d: 0.13 },
+          { x: -0.05, color: '#32CD32', w: 0.07, h: 0.19, d: 0.15 },
+          { x: 0.08, color: '#FF1493', w: 0.05, h: 0.16, d: 0.12 },
+        ].map((book, i) => (
+          <group key={i} position={[book.x, book.h / 2, 0]}>
+            <mesh castShadow>
+              <boxGeometry args={[book.w, book.h, book.d]} />
+              <meshStandardMaterial color={book.color} metalness={0.1} roughness={0.8} />
+            </mesh>
+            {/* Book spine detail */}
+            <mesh position={[0, 0, book.d / 2 + 0.001]}>
+              <boxGeometry args={[book.w, book.h, 0.002]} />
+              <meshStandardMaterial color={book.color} metalness={0.2} roughness={0.6} />
+            </mesh>
+          </group>
         ))}
       </group>
     </group>

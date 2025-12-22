@@ -29,14 +29,20 @@ export const InteractiveObject = ({
   const isActive = activeSection === section;
   const showLabel = !activeSection && hovered;
 
-  // Hover animation
-  useFrame((_, delta) => {
+  // Hover animation with glow effect
+  useFrame((state, delta) => {
     if (!groupRef.current) return;
     
     const targetScale = hovered && !activeSection ? HOVER_SCALE : 1;
     const currentScale = groupRef.current.scale.x;
     const newScale = THREE.MathUtils.lerp(currentScale, targetScale, delta * 8);
     groupRef.current.scale.setScalar(newScale);
+    
+    // Add subtle pulse effect when hovered
+    if (hovered && !activeSection) {
+      const pulse = 1 + Math.sin(state.clock.elapsedTime * 4) * 0.02;
+      groupRef.current.scale.setScalar(newScale * pulse);
+    }
   });
 
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
@@ -67,6 +73,19 @@ export const InteractiveObject = ({
     >
       {children}
 
+      {/* Glow effect when hovered */}
+      {hovered && !activeSection && (
+        <mesh position={[0, 0, 0]}>
+          <sphereGeometry args={[0.5, 16, 16]} />
+          <meshBasicMaterial
+            color="#00ff88"
+            transparent
+            opacity={0.1}
+            side={THREE.BackSide}
+          />
+        </mesh>
+      )}
+
       {/* Hover label */}
       {showLabel && (
         <Html
@@ -78,18 +97,20 @@ export const InteractiveObject = ({
         >
           <div
             style={{
-              background: 'rgba(0, 0, 0, 0.85)',
-              border: '1px solid #00ff88',
-              borderRadius: '4px',
-              padding: '6px 12px',
+              background: 'rgba(0, 0, 0, 0.9)',
+              border: '2px solid #00ff88',
+              borderRadius: '6px',
+              padding: '8px 14px',
               fontFamily: "'Space Mono', monospace",
-              fontSize: '12px',
+              fontSize: '13px',
+              fontWeight: '600',
               color: '#00ff88',
               whiteSpace: 'nowrap',
-              boxShadow: '0 0 10px rgba(0, 255, 136, 0.3)',
+              boxShadow: '0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.3)',
+              animation: 'pulse 1.5s ease-in-out infinite',
             }}
           >
-            {SECTION_LABELS[section]}
+            Click to view {SECTION_LABELS[section]}
           </div>
         </Html>
       )}

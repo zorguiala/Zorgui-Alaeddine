@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { Sun, Moon } from 'lucide-react';
-import { useTheme } from '@/hooks';
 
-const Button = styled.button`
+export const Button = styled.button`
   position: fixed;
   top: 20px;
   right: 20px;
@@ -18,11 +16,16 @@ const Button = styled.button`
   transition: all 0.3s ease;
   z-index: 100;
   box-shadow: ${({ theme }) => theme.shadows.md};
+  backdrop-filter: blur(10px);
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.accent.primary};
     box-shadow: ${({ theme }) => theme.shadows.glow};
-    transform: scale(1.05);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 
   svg {
@@ -30,20 +33,11 @@ const Button = styled.button`
     height: 20px;
     color: ${({ theme }) => theme.colors.accent.primary};
     transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 2px currentColor);
   }
 
   &:hover svg {
     transform: rotate(15deg);
   }
 `;
-
-export const ThemeToggle = () => {
-  const { toggleTheme, isDark } = useTheme();
-
-  return (
-    <Button onClick={toggleTheme} aria-label="Toggle theme">
-      {isDark ? <Sun /> : <Moon />}
-    </Button>
-  );
-};
 
