@@ -16,6 +16,18 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    rollupOptions: {
+      external: (id) => {
+        // Exclude Next.js specific imports from @vercel/analytics
+        if (id.includes('next/navigation')) {
+          return true;
+        }
+        return false;
+      },
+    },
+  },
+  optimizeDeps: {
+    exclude: ['@vercel/analytics/next'],
   },
   test: {
     globals: true,

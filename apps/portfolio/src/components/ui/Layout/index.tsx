@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { LayoutContainer } from './styles';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/react';
 
 interface LayoutProps {
   children: ReactNode;
