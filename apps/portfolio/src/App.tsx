@@ -11,6 +11,7 @@ import {
   SocialLinks,
   LoadingScreen,
   Onboarding,
+  ContentOverlay,
 } from '@/components/ui';
 
 const AppContent = () => {
@@ -31,6 +32,7 @@ const AppContent = () => {
         {!isLoading && (
           <>
             <Onboarding />
+            <ContentOverlay />
             <ThemeToggle />
             <BackButton />
             <Navigation />
@@ -52,4 +54,3 @@ const App = () => {
 };
 
 export default App;
-

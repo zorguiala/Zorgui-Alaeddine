@@ -1,10 +1,8 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Html } from '@react-three/drei';
 import { InteractiveObject } from './InteractiveObject';
 import { useAppStore } from '@/stores';
-import { ContactContent } from '@/components/content/ContactContent';
 import { OBJECT_POSITIONS } from '@/utils/constants';
 
 export const Laptop = () => {
@@ -17,7 +15,7 @@ export const Laptop = () => {
     if (screenRef.current) {
       const material = screenRef.current.material as THREE.MeshStandardMaterial;
       material.emissiveIntensity = isActive 
-        ? 0.3 + Math.sin(state.clock.elapsedTime * 3) * 0.05
+        ? 0.4 + Math.sin(state.clock.elapsedTime * 3) * 0.05
         : 0.1;
     }
   });
@@ -90,9 +88,9 @@ export const Laptop = () => {
         >
           <planeGeometry args={[0.42, 0.28]} />
           <meshStandardMaterial
-            color={isActive ? '#0a1015' : '#1a1a2a'}
-            emissive={isActive ? '#00aaff' : '#4488ff'}
-            emissiveIntensity={isActive ? 0.3 : 0.15}
+            color={isActive ? '#0d1820' : '#1a1a2a'}
+            emissive={isActive ? '#00ff88' : '#4488ff'}
+            emissiveIntensity={isActive ? 0.4 : 0.15}
             metalness={0.9}
             roughness={0.1}
           />
@@ -103,21 +101,6 @@ export const Laptop = () => {
           <circleGeometry args={[0.006, 16]} />
           <meshStandardMaterial color="#1a1a1a" />
         </mesh>
-
-        {/* Content on screen */}
-        {isActive && (
-          <Html
-            transform
-            position={[0, 0.18, 0.01]}
-            style={{
-              width: '350px',
-              height: '230px',
-            }}
-            distanceFactor={0.7}
-          >
-            <ContactContent />
-          </Html>
-        )}
       </group>
     </InteractiveObject>
   );

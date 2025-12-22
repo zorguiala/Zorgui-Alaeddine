@@ -1,17 +1,15 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Html } from '@react-three/drei';
 import { InteractiveObject } from './InteractiveObject';
 import { useAppStore } from '@/stores';
-import { ExperienceContent } from '@/components/content/ExperienceContent';
 import { OBJECT_POSITIONS } from '@/utils/constants';
 
 const BOOKS = [
-  { color: '#8B0000', height: 0.04 }, // Dark red
-  { color: '#006400', height: 0.035 }, // Dark green
-  { color: '#00008B', height: 0.045 }, // Dark blue
-  { color: '#4B0082', height: 0.03 }, // Indigo
+  { color: '#8B0000', height: 0.04 },
+  { color: '#006400', height: 0.035 },
+  { color: '#00008B', height: 0.045 },
+  { color: '#4B0082', height: 0.03 },
 ];
 
 export const BookStack = () => {
@@ -85,18 +83,6 @@ export const BookStack = () => {
           <meshStandardMaterial color="#ff3366" metalness={0.1} roughness={0.8} />
         </mesh>
       </group>
-
-      {/* Content panel */}
-      {isActive && (
-        <Html
-          position={[0, 0.6, 0]}
-          center
-          style={{ width: '480px' }}
-          distanceFactor={0.9}
-        >
-          <ExperienceContent />
-        </Html>
-      )}
     </InteractiveObject>
   );
 };
