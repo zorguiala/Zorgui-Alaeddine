@@ -11,22 +11,23 @@ export const projects: Project[] = [
     status: 'completed',
   },
   {
-    id: 'placeholder-1',
-    title: 'Coming Soon',
-    description: 'New project in development...',
-    technologies: [],
-    github: null,
-    live: null,
-    status: 'upcoming',
+    id: 'NICE on Success',
+    title: 'NICE on Success',
+    description:
+      'The extension automatically plays meme celebratory sounds when your tasks and commands succeed, and different sounds when they fail.',
+    technologies: ['TypeScript', 'VScode Extensions', 'JavaScript'],
+    github: 'https://github.com/zorguiala/NICE-on_Success',
+    live: 'https://marketplace.visualstudio.com/items?itemName=Alaeddinezorgui.nice-on-success',
+    status: 'completed',
   },
   {
-    id: 'placeholder-2',
-    title: 'Coming Soon',
-    description: 'New project in development...',
-    technologies: [],
-    github: null,
+    id: 'Odoo mcp',
+    title: 'Odoo MCP',
+    description:
+      'An extension for Odoo that provides a modern UI for managing and customizing your Odoo instance.',
+    technologies: ['TypeScript', 'VScode Extensions', 'JavaScript'],
+    github: 'https://github.com/zorguiala/Odoo-MCP',
     live: null,
-    status: 'upcoming',
+    status: 'completed',
   },
 ];
-
