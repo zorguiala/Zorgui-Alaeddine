@@ -9,9 +9,7 @@ export const skills: Record<string, Skill[]> = {
     { name: 'HTML5/CSS3', level: 95, years: 6 },
     { name: 'styled-components', level: 85, years: 3 },
     { name: 'Apollo GraphQL', level: 80, years: 2 },
-    { name: 'Redux', level: 85, years: 4 },
     { name: 'React Query', level: 85, years: 2 },
-    { name: 'Sass', level: 85, years: 4 },
   ],
   testing: [
     { name: 'Jest', level: 85, years: 3 },
@@ -31,4 +29,3 @@ export const skills: Record<string, Skill[]> = {
     { name: 'Jira/Kanban', level: 85, years: 4 },
   ],
 };
-
