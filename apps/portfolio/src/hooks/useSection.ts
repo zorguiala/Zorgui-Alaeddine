@@ -15,7 +15,7 @@ export const useSection = () => {
       if (isTransitioning) return;
       setIsTransitioning(true);
       setActiveSection(section);
-      
+
       // Reset transitioning after animation
       setTimeout(() => {
         setIsTransitioning(false);
@@ -28,7 +28,7 @@ export const useSection = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     goBack();
-    
+
     setTimeout(() => {
       setIsTransitioning(false);
     }, 1500);
@@ -53,4 +53,3 @@ export const useSection = () => {
     isInSection: activeSection !== null,
   };
 };
-
