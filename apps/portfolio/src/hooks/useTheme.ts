@@ -12,4 +12,3 @@ export const useTheme = () => {
     isDark: theme === 'dark',
   };
 };
-
