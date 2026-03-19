@@ -2,6 +2,7 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import { profile } from '@/data';
 import { Container, SocialLink } from './styles';
 
+
 export const SocialLinks = () => {
   return (
     <Container>

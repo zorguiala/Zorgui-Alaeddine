@@ -37,6 +37,7 @@ const AppContent = () => {
             <BackButton />
             <Navigation />
             <SocialLinks />
+            
           </>
         )}
       </Layout>
