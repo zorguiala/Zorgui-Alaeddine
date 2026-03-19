@@ -1,6 +1,5 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { profile } from '@/data';
-import { ToptalBadge } from './ToptalBadge';
 import { Container, SocialLink } from './styles';
 
 
@@ -26,7 +25,6 @@ export const SocialLinks = () => {
       <SocialLink href={`mailto:${profile.email}`} aria-label="Email">
         <Mail />
       </SocialLink>
-      <ToptalBadge />
     </Container>
   );
 };
